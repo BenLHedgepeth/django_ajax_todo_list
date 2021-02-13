@@ -10,5 +10,6 @@ class ItemForm(forms.Form):
             field.widget.attrs.update({
                 "placeholder": "Add a todo...",
                 "class": "form_element",
-                "id": "input_text"
+                "id": "input_text",
+                "name": label
             })
