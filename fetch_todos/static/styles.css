@@ -1,0 +1,54 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: lightblue;
+}
+
+@media screen and (min-width: 450px) {
+  .todos_wrapper {
+    display: flex;
+    flex-direction: column;
+    /* align-items: stretch; */
+    margin: auto;
+  }
+
+  .form_element {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    box-shadow: inset 0px 0px 10px 3px silver;
+    font-family: oswald;
+    font-size: 1.5rem;
+  }
+
+
+  .button {
+    text-align: center;
+    margin: 0;
+    background: red;
+    transition: box-shadow 0.1s ease-in-out;
+  }
+
+  .button:active {
+    box-shadow: inset 0px 0px 15px 2px firebrick, inset 0px 0px 10px 5px grey;
+    color: firebrick;
+  }
+
+  .todos_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    width: 100%;
+    min-height: calc(100vh - 162px);
+    background: dodgerblue;
+    box-shadow: inset 0px 0px 10px 5px navy;
+    opacity: 0.7;
+    font-family: oswald;
+    color: navy;
+    font-size: 30px;
+  }
+}

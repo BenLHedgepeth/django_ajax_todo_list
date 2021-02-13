@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+
+{% block content %}
+  <form action="" method="post">
+    {% for field in form %}
+      {{ field }}
+    {% endfor %}
+  </form>
+  <p id="submit" class="button form_element">Add</p>
+  <section class="todos_box">
+    <p>Your todos go here...</p>
+  </section>
+{% endblock %}
