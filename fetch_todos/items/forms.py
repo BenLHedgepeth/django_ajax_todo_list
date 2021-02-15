@@ -11,5 +11,4 @@ class ItemForm(forms.Form):
                 "placeholder": "Add a todo...",
                 "class": "form_element",
                 "id": "input_text",
-                "name": label
             })

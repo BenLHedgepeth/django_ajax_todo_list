@@ -8,3 +8,8 @@ class TodoList(View):
     def get(self, request):
         form = ItemForm()
         return render(request, "items/todos.html", {"form": form})
+
+    def post(self, request):
+        form = ItemForm(request.POST)
+        print(form)
+        return render(request, "items/todos.html", {"form": form})

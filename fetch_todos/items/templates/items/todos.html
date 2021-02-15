@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 {% load static %}
 {% block content %}
-  <form>
+  <form url="{% url 'main_todos' %}">
     {% csrf_token %}
     {% for field in form %}
       {{ field }}
@@ -9,7 +9,7 @@
     <button id="submit" class="button form_element" type="button">Add</button>
   </form>
   <section class="todos_box">
-    <p>Your todos go here...</p>
+    <p class="todo_placeholder">Your todos go here...</p>
   </section>
   <script src="{% static 'items/js/fetch_todos.js' %}"></script>
 {% endblock %}
