@@ -7,6 +7,7 @@ from .models import Todo
 
 
 class TodoSerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
     item = serializers.CharField()
 
 
