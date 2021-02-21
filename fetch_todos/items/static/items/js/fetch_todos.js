@@ -40,16 +40,17 @@ function add_todo_element(event) {
     }
   });
 
-  let previous_error = document.querySelector(".message");
-  if (previous_error) {
-    previous_error.textContent = "";
-    previous_error.classList.remove("submission_error")
+  let error = document.querySelector(".submission_error");
+  if (error) {
+    error.classList.replace("submission_error", "hide");
   }
 
   fetch(request).then((response) => {
 
       if (response.status === 204) {
         throw new Error("Cannot create duplicate todo");
+      } else if (response.status === 400) {
+        throw new Error("Invalid todo!")
       }
       return response.json();
   }).then((data) => {
@@ -76,6 +77,7 @@ function add_todo_element(event) {
   }).catch((e) => {
     let message = document.querySelector(".message");
     message.textContent = `${e.message}`;
+    message.classList.remove("hide");
     message.classList.add("submission_error");
   });
 }

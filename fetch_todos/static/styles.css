@@ -11,8 +11,7 @@ body {
 
 .todos_wrapper {
   width: 900px;
-
-  /* box-shadow: 0px 5px 25px 10px; */
+  /* height: 400px; */
 }
 
 .todo_component {
@@ -71,6 +70,10 @@ form {
   margin: 1rem 0;
 }
 
+.hide {
+  visibility: hidden;
+}
+
 .delete {
   margin: 0 25px;
 }
@@ -86,16 +89,17 @@ form {
 }
 
 .message {
-  /* height: 30px;
-  width: 400px; */
-}
-
-.submission_error {
   text-align: center;
   margin: 20px 0;
   font-size: 1.5rem;
   color: red;
   font-weight: bold;
+  height: 30px;
+}
+
+
+
+.submission_error {
   animation: shade 1s;
   animation-iteration-count: 2;
 }
