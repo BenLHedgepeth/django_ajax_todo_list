@@ -19,3 +19,10 @@ class AddTodoView(APIView):
             else:
                 serializer = TodoSerializer(todo)
                 return Response(serializer.data, 200)
+
+class DeleteTodoView(APIView):
+
+    def delete(self, request, id):
+        todo = Todo.objects.get(id=id)
+        todo.delete()
+        return Response(status=204)

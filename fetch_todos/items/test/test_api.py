@@ -36,3 +36,19 @@ class TestDuplicateTodo(TestTodo):
             self.url, self.json, content_type="application/json"
         )
         self.assertEqual(response.status_code, 204)
+
+class TestDeleteTodo(APITestCase):
+
+    @classmethod
+    def setUpTestData(cls):
+        data = {
+            'id': 3,
+            'item': "Todo 3"
+        }
+        Todo.objects.create(**data)
+        cls.url = reverse("todos:delete_todo", kwargs={"id": 3})
+
+    def test_delete_todo_request(self):
+        response = self.client.delete(self.url)
+        self.assertEqual(Todo.objects.count(), 0)
+        self.assertEqual(response.status_code, 204)

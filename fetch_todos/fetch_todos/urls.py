@@ -20,7 +20,8 @@ from items import api_views as item_api_views
 from items import views as item_views
 
 todos_api = ([
-    path("", item_api_views.AddTodoView.as_view(), name="add_todo")
+    path("", item_api_views.AddTodoView.as_view(), name="add_todo"),
+    path("<int:id>/", item_api_views.DeleteTodoView.as_view(), name="delete_todo"),
 ], 'items')
 
 urlpatterns = [

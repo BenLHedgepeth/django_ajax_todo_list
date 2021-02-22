@@ -1,3 +1,4 @@
+
 function createSvgDeleteButton() {
   let svg = document.createElementNS("http://www.w3.org/2000/svg", 'svg');
   svg.setAttribute("width", "45px");
@@ -23,8 +24,26 @@ function createSvgDeleteButton() {
 }
 
 
+function delete_todo(event) {
+  const id = event.currentTarget.id.split("_")[1];
+  const request = new Request(`api/v1/todos/${id}/`, {
+    'method': 'delete',
+    'headers': {
+      'content-type': 'application/json',
+      'accept': 'application/json'
+    }
+  });
+  fetch(request).then((response) => {
+    if (response.ok) {
+      let todo = document.querySelector(`#todo_${id}`);
+      todo.parentElement.removeChild(todo);
+    }
+  })
+}
+
 var button = document.querySelector("button");
-var input = document.querySelector("input[type='text']")
+var input = document.querySelector("input[type='text']");
+
 function add_todo_element(event) {
   let form = document.querySelector("form");
   const data = JSON.stringify(
@@ -60,13 +79,15 @@ function add_todo_element(event) {
     }
     let todos_container = document.querySelector(".todos_list");
     let todo_div = document.createElement("div");
-    todo_div.setAttribute("class", "todo")
+    todo_div.setAttribute("class", `todo`)
+    todo_div.setAttribute("id", `todo_${data.id}`)
     let p = document.createElement("p");
     p.textContent = data.item;
     let delete_button = createSvgDeleteButton();
     [delete_button, p].forEach((element) => {
       if (element.nodeName === 'svg') {
-        element.id=`todo_${data.id}`
+        element.id=`delete_${data.id}`
+        element.addEventListener("click", delete_todo)
         element.classList.add('todo_component', 'delete');
       } else{
         element.classList.add('todo_component', 'todo_text');
