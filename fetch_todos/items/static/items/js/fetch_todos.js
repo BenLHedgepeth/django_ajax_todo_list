@@ -22,6 +22,7 @@ var button = document.querySelector("button");
 var input = document.querySelector("input[type='text']");
 
 function add_todo_element(event) {
+  event.preventDefault()
   let form = document.querySelector("form");
   const data = JSON.stringify(
     Object.fromEntries(new FormData(form))
@@ -83,6 +84,6 @@ function add_todo_element(event) {
 button.addEventListener("click", add_todo_element);
 input.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
-    add_todo_element(event);  
+    add_todo_element(event);
   }
 })
